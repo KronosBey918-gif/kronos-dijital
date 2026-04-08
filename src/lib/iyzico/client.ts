@@ -54,7 +54,7 @@ export function createPaymentForm(params: IyzicoPaymentRequest): Promise<{
   errorMessage?: string;
 }> {
   return new Promise((resolve, reject) => {
-    iyzipay.checkoutFormInitialize.create(params as Record<string, unknown>, (err: Error | null, result: Record<string, unknown>) => {
+    iyzipay.checkoutFormInitialize.create(params as unknown as Record<string, unknown>, (err: Error | null, result: Record<string, unknown>) => {
       if (err) reject(err);
       else resolve(result as ReturnType<typeof resolve> extends Promise<infer T> ? T : never);
     });
